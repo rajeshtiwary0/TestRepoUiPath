@@ -1,0 +1,22 @@
+First Article 
+
+	1) How many FTE are saved?
+  
+	2)How many processes were automated?
+	
+	3) How many customers do they have?
+
+	4) How long did it take to automate a proces?
+
+Second article
+
+	1) How many transactions did UiPath process?
+
+	2) What was the accuracy?
+
+	3) How many hours were saved?
+
+	4) What was the reduction in processing time?
+
+	5) What was the success rate?
+	
