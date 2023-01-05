@@ -1,0 +1,114 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="412,1175" sap2010:WorkflowViewState.IdRef="test_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.MLServices;assembly=UiPath.MLServices" xmlns:uma="clr-namespace:UiPath.MLServices.Activities;assembly=UiPath.MLServices.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="22">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.MLServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="17">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MLServices</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="test" sap:VirtualizedContainerService.HintSize="392,1115" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="payload" />
+      <Variable x:TypeArguments="x:String" Name="articleText" />
+      <Variable x:TypeArguments="x:String" Name="question" />
+      <Variable x:TypeArguments="x:String" Name="output" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ReadTextFile Content="[payload]" DisplayName="Read Text File" FileName="payload.txt" sap:VirtualizedContainerService.HintSize="350,132" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <Assign sap:VirtualizedContainerService.HintSize="350,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[articleText]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["To Date, the company has developed over 40 robots And, As Each robot addresses a Single process, it has automated over 40 processes In less than 20 months. It Is currently automating a New process–Or Partial process–every three weeks. Juha believes that one Of the major benefits Of RPA Is that it has allowed DNA To undertake tasks that the company didn’t have the capacity To Do manually. He cites the first B2C process automated As a good example Of that. The process involves checking In a Public registry To see If any customer details have changed–such As changes To the family name When they Get married–And the robot automatically updates the changes Into the company’s CRM systems. With millions Of customers, this would be virtually impossible To Do manually. The robot now does it With complete accuracy every weekend, so customers are assured their details are always correct. RPA has allowed us To perform important work that we couldn’t have done beforehand. We talk about giving hours back To the business. We estimate that so far our automations are returning the equivalent Of 25FTEs (Full Time Employees) every month."]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="350,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[payload]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[payload.Replace("&lt;Text&gt;",articleText)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="350,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[question]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">How many FTE are saved?</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="350,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[payload]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[payload.Replace("&lt;Question&gt;",question)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uma:MLSkills ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" DisplayName="MLSkill" sap:VirtualizedContainerService.HintSize="350,350" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[payload]" JsonResponse="[output]" NextPageNum="2" RefreshList="False" TotalCount="9">
+      <uma:MLSkills.MLSkillList>
+        <scg:List x:TypeArguments="um:MLSkill" Capacity="16">
+          <um:MLSkill OutputDescription="{x:Null}" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/cf7ae654-02bd-412b-b0cd-a2738b31a9c3/bank-churn-model" Description="" Id="79c220b8-095f-4b94-bedc-5e5c785225b0" InputDescription="Input CSV file with customer data" InputType="FILE" Name="Bank Churn Model" TenantId="cf7ae654-02bd-412b-b0cd-a2738b31a9c3" />
+          <um:MLSkill InputDescription="{x:Null}" OutputDescription="{x:Null}" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/cf7ae654-02bd-412b-b0cd-a2738b31a9c3/car-class-skill" Description="" Id="a531f598-223f-4d7e-a70e-4f70f75f05f6" InputType="JSON" Name="car_class_skill" TenantId="cf7ae654-02bd-412b-b0cd-a2738b31a9c3" />
+          <um:MLSkill InputDescription="{x:Null}" OutputDescription="{x:Null}" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/cf7ae654-02bd-412b-b0cd-a2738b31a9c3/consumercomplaint" Description="" Id="29dc2292-742c-4bb1-ae9a-5098d3ff9994" InputType="JSON" Name="ConsumerComplaint" TenantId="cf7ae654-02bd-412b-b0cd-a2738b31a9c3" />
+          <um:MLSkill InputDescription="{x:Null}" OutputDescription="{x:Null}" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/cf7ae654-02bd-412b-b0cd-a2738b31a9c3/docsummarizer" Description="" Id="48c5a550-cd59-4dfb-9f31-3694f84ff8bc" InputType="JSON" Name="DocSummarizer" TenantId="cf7ae654-02bd-412b-b0cd-a2738b31a9c3" />
+          <um:MLSkill AccessUri="https://aifabric-staging.uipath.com/mlskills/host/cf7ae654-02bd-412b-b0cd-a2738b31a9c3/extract-skills" Description="" Id="5eb6e0eb-225b-42b6-8a38-7725a60f883f" InputDescription="Input body of text" InputType="JSON" Name="Extract Skills" OutputDescription="Output list of skills" TenantId="cf7ae654-02bd-412b-b0cd-a2738b31a9c3" />
+          <um:MLSkill InputDescription="{x:Null}" OutputDescription="{x:Null}" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/cf7ae654-02bd-412b-b0cd-a2738b31a9c3/job-match" Description="" Id="21909d84-4ae4-4287-91a8-21a92d0237df" InputType="JSON" Name="Job Match" TenantId="cf7ae654-02bd-412b-b0cd-a2738b31a9c3" />
+          <um:MLSkill AccessUri="https://aifabric-staging.uipath.com/mlskills/host/cf7ae654-02bd-412b-b0cd-a2738b31a9c3/knowledge-base" Description="" Id="db429112-03fc-4a6f-97f9-d45e4851de9f" InputDescription="Input the question inside quotations" InputType="JSON" Name="Knowledge Base" OutputDescription="The response from the knowledge base" TenantId="cf7ae654-02bd-412b-b0cd-a2738b31a9c3" />
+          <um:MLSkill InputDescription="{x:Null}" OutputDescription="{x:Null}" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/cf7ae654-02bd-412b-b0cd-a2738b31a9c3/predict-inventory" Description="" Id="77c3541a-17b9-47ee-9eea-7c916e9bbf8d" InputType="JSON" Name="Predict Inventory" TenantId="cf7ae654-02bd-412b-b0cd-a2738b31a9c3" />
+          <x:Reference>__ReferenceID0</x:Reference>
+        </scg:List>
+      </uma:MLSkills.MLSkillList>
+      <uma:MLSkills.SelectedMLSkill>
+        <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/cf7ae654-02bd-412b-b0cd-a2738b31a9c3/qna" Description="" Id="6c016b34-34e5-467b-baaa-3d1492cabe83" InputDescription="Please input the question and the answers" InputType="JSON" Name="QnA" OutputDescription="The answer to each question" TenantId="cf7ae654-02bd-412b-b0cd-a2738b31a9c3" />
+      </uma:MLSkills.SelectedMLSkill>
+    </uma:MLSkills>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="350,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[output.ToString]" />
+  </Sequence>
+</Activity>

@@ -1,0 +1,185 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AI_Fabric_Answer_Question" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="711.2,2673.6" sap2010:WorkflowViewState.IdRef="AI_Fabric_Answer_Question_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.MLServices;assembly=UiPath.MLServices" xmlns:uma="clr-namespace:UiPath.MLServices.Activities;assembly=UiPath.MLServices.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="48">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.MLServices</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MLServices</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="AI_Fabric_Answer_Question" sap:VirtualizedContainerService.HintSize="691.2,2613.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="payload" />
+      <Variable x:TypeArguments="x:String" Name="output" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_URLs" />
+      <Variable x:TypeArguments="x:Int32" Name="index" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap:VirtualizedContainerService.HintSize="649.6,180.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="sd:DataTable" Name="dt_text" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ReadRange AddHeaders="True" DataTable="[dt_URLs]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="[Nothing]" SheetName="Sheet1" WorkbookPath="newsArticles.xlsx" />
+    </Sequence>
+    <ui:ForEachRow CurrentIndex="[index]" DataTable="[dt_URLs]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="649.6,2300" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="600,2151.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="userResponse" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:OpenBrowser BrowserType="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="558.4,2058.4" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[row(&quot;URL&quot;).toString]">
+              <ui:OpenBrowser.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="524.8,1958.4" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                    <ui:MessageBox Buttons="YesNo" Caption="Question" ChosenButton="[userResponse]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Do you have any question about the success of this UiPath implementation?&quot;]" />
+                    <While sap:VirtualizedContainerService.HintSize="483.2,1640.8" sap2010:WorkflowViewState.IdRef="While_1">
+                      <While.Variables>
+                        <Variable x:TypeArguments="x:String" Name="articleText" />
+                      </While.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <While.Condition>[userResponse.Contains("Yes")]</While.Condition>
+                      <Sequence sap:VirtualizedContainerService.HintSize="392,1481.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="ui:GenericValue" Name="questionAsked" />
+                          <Variable x:TypeArguments="njl:JObject" Name="jsonOutput" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ReadTextFile Content="[payload]" DisplayName="Read Text File" FileName="payload.txt" sap:VirtualizedContainerService.HintSize="350.4,134.4" sap2010:WorkflowViewState.IdRef="ReadTextFile_3" />
+                        <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="350.4,92.8" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Question" Title="Please type your question">
+                          <ui:InputDialog.Result>
+                            <OutArgument x:TypeArguments="ui:GenericValue">[questionAsked]</OutArgument>
+                          </ui:InputDialog.Result>
+                        </ui:InputDialog>
+                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetArticleText workflow" sap:VirtualizedContainerService.HintSize="350.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="GetArticleText.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:Int32" x:Key="in_indexCount">[index]</InArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_articleText">[articleText]</OutArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                        <Assign sap:VirtualizedContainerService.HintSize="350.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[payload]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[payload.Replace("&lt;Text&gt;",articleText)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="350.4,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[payload]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[payload.Replace("&lt;Question&gt;",questionAsked)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <uma:MLSkills ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SelectedMLSkill="{x:Reference __ReferenceID0}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" DisplayName="MLSkill" sap:VirtualizedContainerService.HintSize="350.4,351.2" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[payload]" JsonResponse="[output]" NextPageNum="2" RefreshList="False" TotalCount="4">
+                          <uma:MLSkills.MLSkillList>
+                            <scg:List x:TypeArguments="um:MLSkill" Capacity="4">
+                              <um:MLSkill OutputDescription="{x:Null}" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/ba314af5-683b-4594-b0f6-ffa36a04b82c/consumercomplaint" Description="" Id="a0b6e1c7-5325-44a2-924b-1b5fc998594d" InputDescription="email body" InputType="JSON" Name="ConsumerComplaint" TenantId="ba314af5-683b-4594-b0f6-ffa36a04b82c" />
+                              <um:MLSkill InputDescription="{x:Null}" OutputDescription="{x:Null}" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/ba314af5-683b-4594-b0f6-ffa36a04b82c/customer-churn" Description="" Id="b7a01bba-cd44-4e90-b1f6-9b3104ba67e9" InputType="JSON" Name="Customer Churn" TenantId="ba314af5-683b-4594-b0f6-ffa36a04b82c" />
+                              <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/ba314af5-683b-4594-b0f6-ffa36a04b82c/qa-bert" Description="Open-sourced by ONNX. The model predicts the answer to a question based on some paragraph context. A common use case is in KYC or processing financial reports where a common question can be applied to a standard set of documents. It is based on the state-of-the-art BERT (Bidirectional Encoder Representations from Transformers). The model applies Transformers, a popular attention model, to language modeling to produce an encoding of the input and then trains on the task of question answering." Id="7a7074f5-ee7b-4aa8-81a1-d137601afc9d" InputDescription="The input is a paragraph and question relating to that paragraph. &#xA;For example:&#xA;```&#xA;{&#xA;  &quot;paragraph&quot;: &quot;Abraham Lincoln was an American statesman and lawyer who served as the 16th president of the United States from March 1861 until his assassination in April 1865. Lincoln led the nation through the American Civil War, its bloodiest war and its greatest moral, constitutional, and political crisis.&quot;,&#xA;  &quot;question&quot;: &quot;Which year did Lincoln pass away?&quot;&#xA;}&#xA;```" InputType="JSON" Name="QA_BERT" OutputDescription="Answer to the questions asked in input mapped to ids&#xA;```&#xA;{&#xA;   &quot;answer&quot;: &quot;1865&quot;&#xA;}&#xA;```" TenantId="ba314af5-683b-4594-b0f6-ffa36a04b82c" />
+                              <um:MLSkill InputDescription="{x:Null}" OutputDescription="{x:Null}" AccessUri="https://aifabric-staging.uipath.com/mlskills/host/ba314af5-683b-4594-b0f6-ffa36a04b82c/resumeextractor" Description="" Id="0684f962-31c0-4051-b997-bf46e036f49b" InputType="JSON" Name="ResumeExtractor" TenantId="ba314af5-683b-4594-b0f6-ffa36a04b82c" />
+                            </scg:List>
+                          </uma:MLSkills.MLSkillList>
+                        </uma:MLSkills>
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="350.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[output]" />
+                        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="350.4,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jsonOutput]" JsonString="[output]" />
+                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="350.4,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Question: &quot; +  questionAsked + System.Environment.NewLine +  System.Environment.NewLine + &quot;Answer: &quot; + jsonOutput(&quot;answer&quot;).ToString]" />
+                        <ui:MessageBox Buttons="YesNo" Caption="Question" ChosenButton="[userResponse]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="350.4,60" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Do you have any more questions about the success of this implementation?&quot;]" />
+                      </Sequence>
+                    </While>
+                    <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:OpenBrowser.Body>
+            </ui:OpenBrowser>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+  </Sequence>
+</Activity>
